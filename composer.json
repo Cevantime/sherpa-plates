@@ -1,0 +1,24 @@
+{
+    "name": "foo/bar",
+    "description": "My new project",
+    "require": {
+        "php": ">=7.1",
+        "cevantime/sherpa-framework" : "@dev",
+        "league/plates": "^3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
+    },
+    "authors": [
+        {
+            "name": "Thibault Truffert",
+            "email": "thibaulttruffert@hotmail.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Sherpa\\": ""
+        }
+    }
+}
