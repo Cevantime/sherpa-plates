@@ -1,6 +1,6 @@
 {
     "name": "cevantime/sherpa-plates",
-    "description": "My new project",
+    "description": "Plates Template module for Sherpa Framework",
     "license": "MIT",
     "require": {
         "php": ">=7.1",
