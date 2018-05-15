@@ -1,6 +1,7 @@
 {
     "name": "cevantime/sherpa-plates",
     "description": "My new project",
+    "license": "MIT",
     "require": {
         "php": ">=7.1",
         "cevantime/sherpa-framework" : "@dev",
