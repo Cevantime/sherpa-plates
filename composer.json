@@ -1,5 +1,5 @@
 {
-    "name": "foo/bar",
+    "name": "cevantime/sherpa-plates",
     "description": "My new project",
     "require": {
         "php": ">=7.1",
