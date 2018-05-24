@@ -1,8 +1,7 @@
 <?php
 
-namespace Sherpa\PlateExtension;
+namespace Sherpa\Plates\PlateExtension;
 
-use Sherpa\App\App;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 use Psr\Http\Message\ServerRequestInterface;

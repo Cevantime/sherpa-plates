@@ -1,8 +1,8 @@
 <?php
 
-namespace Sherpa\Middlewares;
+namespace Sherpa\Plates\Middlewares;
 
-use Sherpa\PlateExtension\AppExtension;
+use Sherpa\Plates\PlateExtension\AppExtension;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

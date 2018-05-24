@@ -1,6 +1,6 @@
 <?php
 
-namespace Sherpa\Traits;
+namespace Sherpa\Plates\Traits;
 
 use Zend\Diactoros\Response\HtmlResponse;
 

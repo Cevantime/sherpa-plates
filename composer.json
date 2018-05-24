@@ -19,7 +19,8 @@
 
     "autoload": {
         "psr-4": {
-            "Sherpa\\": ""
+            "Sherpa\\Plates\\": "src/"
         }
-    }
+    },
+    "minimum-stability" : "dev"
 }
