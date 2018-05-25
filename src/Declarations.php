@@ -2,25 +2,29 @@
 
 namespace Sherpa\Plates;
 
+use League\Plates\Engine;
+use Sherpa\App\App;
 use Sherpa\Declaration\DeclarationInterface;
+use Sherpa\Plates\Middlewares\PlatesRenderer;
 
 class Declarations implements DeclarationInterface
 {
 
-    public function register(\Sherpa\App\App $app)
+    public function register(App $app)
     {
         $builder = $app->getContainerBuilder();
 
         $builder->addDefinitions([
             'renderer.engine' => function($container) {
-                return (new League\Plates\Engine($container->get('renderer.dir'), $container->get('renderer.ext')));
+                return (new Engine($container->get('renderer.dir'), $container->get('renderer.ext')));
             },
-            'renderer.dir' => PROJECT_FOLDER . '/templates',
+            Engine::class => \DI\get("renderer.engine"),
+            'renderer.dir' => 'templates',
             'renderer.ext' => 'php'
         ]);
 
-        $app->delayed(function(Sherpa\App\App $app) {
-            $app->add(new Sherpa\Plates\Middlewares\PlatesRenderer($app->get('renderer.engine')), 10);
+        $app->delayed(function(App $app) {
+            $app->add(new PlatesRenderer($app->get('renderer.engine')), 10);
         });
     }
 

@@ -8,7 +8,7 @@
         "league/plates": "^3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.0"
+        "codeception/codeception": "2.4.x-dev"
     },
     "authors": [
         {
