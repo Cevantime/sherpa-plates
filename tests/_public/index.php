@@ -13,6 +13,8 @@ $app = new App();
 
 $app->addDeclaration(Sherpa\Plates\Declarations::class);
 
+$app->set('renderer.dir', 'templates');
+
 $routerMap = $app->getRouterMap();
 
 $routerMap->get('home', '/', function(Engine $engine){

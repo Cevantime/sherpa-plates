@@ -19,7 +19,7 @@ class Declarations implements DeclarationInterface
                 return (new Engine($container->get('renderer.dir'), $container->get('renderer.ext')));
             },
             Engine::class => \DI\get("renderer.engine"),
-            'renderer.dir' => 'templates',
+            'renderer.dir' => '../templates',
             'renderer.ext' => 'php'
         ]);
 
