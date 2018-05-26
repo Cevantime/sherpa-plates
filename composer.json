@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1",
-        "cevantime/sherpa-framework" : "@dev",
+        "cevantime/sherpa-framework": "@dev",
         "league/plates": "^3.3"
     },
     "require-dev": {
@@ -16,11 +16,13 @@
             "email": "thibaulttruffert@hotmail.com"
         }
     ],
-
+    "post-install-cmd": [
+        "Sherpa\\Plates\\PostInstall::execute"
+    ],
     "autoload": {
         "psr-4": {
             "Sherpa\\Plates\\": "src/"
         }
     },
-    "minimum-stability" : "dev"
+    "minimum-stability": "dev"
 }
