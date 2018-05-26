@@ -16,9 +16,11 @@
             "email": "thibaulttruffert@hotmail.com"
         }
     ],
-    "post-install-cmd": [
-        "Sherpa\\Plates\\PostInstall::execute"
-    ],
+    "scripts" : {
+        "post-install-cmd": [
+            "Sherpa\\Plates\\PostInstall::execute"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Sherpa\\Plates\\": "src/"

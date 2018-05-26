@@ -9,37 +9,44 @@ namespace Sherpa\Plates;
  */
 class PostInstall
 {
-    public function execute()
+
+    public static function execute()
     {
         $templateFolder = 'templates';
         $layoutFileName = 'layout';
         $templateFileName = 'home';
-        
-        mkdir($templateFolder);
-        
-        $layout = "<?php\n
-/* @var $this League\Plates\Template\Template */\n
-?>\n
-\n
-<html>\n
-    <head>\n
-        <title>Test Plates</title>\n
-    </head>\n
-    <body>\n
-        <?php echo \$this->section(\'body\'); ?>\n
-    </body>\n
+
+        if (!file_exists($templateFolder)) {
+            mkdir($templateFolder);
+        }
+
+        $layout = "<?php
+/* @var \$this League\Plates\Template\Template */
+?>
+<html>
+    <head>
+        <title>Test Plates</title>
+    </head>
+    <body>
+        <?php echo \$this->section('body'); ?>
+    </body>
 </html>";
-        
-        $template = "<?php\n
-/* @var \$this League\Plates\Template\Template */\n
-\n
-\$this->layout(\'layout\');\n
-?>\n
-<?php \$this->start(\'body\'); ?>\n
-Hello Plates !!\n
+
+        $template = "<?php
+/* @var \$this League\Plates\Template\Template */
+\$this->layout('layout');
+?>
+
+<?php \$this->start('body'); ?>
+    Hello Plates !!
 <?php \$this->stop();";
-        
-        file_put_contents($templateFolder.'/'.$layoutFileName, $layout);
-        file_put_contents($templateFolder.'/'.$templateFileName, $template);
+
+        if (!file_exists($layoutFile = $templateFolder . '/' . $layoutFileName.'.php')) {
+            file_put_contents($layoutFile, $layout);
+        }
+        if (!file_exists($templateFile = $templateFolder . '/' . $templateFileName.'.php')) {
+            file_put_contents($templateFile, $template);
+        }
     }
+
 }
