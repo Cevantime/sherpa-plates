@@ -15,7 +15,7 @@ $app->addDeclaration(Sherpa\Plates\Declarations::class);
 
 $app->set('renderer.dir', 'templates');
 
-$routerMap = $app->getRouterMap();
+$routerMap = $app->getMap();
 
 $routerMap->get('home', '/', function(Engine $engine){
     return new HtmlResponse($engine->render('hello'));

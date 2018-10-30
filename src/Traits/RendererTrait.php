@@ -13,6 +13,6 @@ trait RendererTrait
 {
     public function render($name, $data = array()) 
     {
-        return new HtmlResponse($this->get('renderer.engine')->render($name, $data));
+        return new HtmlResponse($this->container->get('renderer.engine')->render($name, $data));
     }
 }

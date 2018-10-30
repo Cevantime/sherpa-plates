@@ -25,6 +25,5 @@
         "psr-4": {
             "Sherpa\\Plates\\": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

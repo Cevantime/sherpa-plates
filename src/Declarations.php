@@ -2,30 +2,34 @@
 
 namespace Sherpa\Plates;
 
+use DI\ContainerBuilder;
+use function DI\create;
+use function DI\get;
+use function DI\string;
 use League\Plates\Engine;
+use Psr\Http\Message\ServerRequestInterface;
 use Sherpa\App\App;
+use Sherpa\Declaration\Declaration;
 use Sherpa\Declaration\DeclarationInterface;
-use Sherpa\Plates\Middlewares\PlatesRenderer;
+use Sherpa\Plates\PlateExtension\AppExtension;
+use Sherpa\Plates\PlateExtension\HelperExtension;
 
-class Declarations implements DeclarationInterface
+class Declarations extends Declaration
 {
 
-    public function register(App $app)
+    public function definitions(ContainerBuilder $builder)
     {
-        $builder = $app->getContainerBuilder();
-
         $builder->addDefinitions([
-            'renderer.engine' => function($container) {
-                return (new Engine($container->get('renderer.dir'), $container->get('renderer.ext')));
-            },
-            Engine::class => \DI\get("renderer.engine"),
-            'renderer.dir' => '../templates',
+            Engine::class => create()
+                ->constructor(get('renderer.dir'), get('renderer.ext'))
+                ->method('loadExtension', get(AppExtension::class))
+                ->method('loadExtension', get(HelperExtension::class))
+            ,
+            AppExtension::class => create()->constructor(get(ServerRequestInterface::class), get('router')),
+            'renderer.engine' => \DI\get(Engine::class),
+            'renderer.dir' => string('{project.root}/templates'),
             'renderer.ext' => 'php'
         ]);
-
-        $app->delayed(function(App $app) {
-            $app->add(new PlatesRenderer($app->get('renderer.engine')), 10);
-        });
     }
 
 }
